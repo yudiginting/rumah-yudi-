@@ -3,130 +3,71 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Profil Yudi Ginting</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <title>Upload Data - Yudi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: 'Outfit', sans-serif;
-      background: radial-gradient(circle at top left, #222, #111);
+      background: linear-gradient(to right, #1e3c72, #2a5298);
       color: #fff;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
       min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      background: #ffffff20;
+      backdrop-filter: blur(8px);
+      border-radius: 16px;
       padding: 30px;
-    }
-
-    .card {
-      background: #1e1e2f;
-      border-radius: 20px;
-      padding: 40px;
+      width: 90%;
       max-width: 500px;
-      width: 100%;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-      animation: slideUp 1s ease forwards;
-      transform: translateY(30px);
-      opacity: 0;
-    }
-
-    @keyframes slideUp {
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    .profile-img {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #00bcd4;
-      margin-bottom: 20px;
-      animation: zoomIn 1s ease 0.3s forwards;
-      opacity: 0;
-      transform: scale(0.8);
-    }
-
-    @keyframes zoomIn {
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     }
 
     h1 {
-      font-size: 28px;
-      color: #00bcd4;
-      margin-bottom: 10px;
-      animation: fadeIn 1s ease 0.6s forwards;
-      opacity: 0;
+      margin-bottom: 20px;
     }
 
-    p {
-      font-size: 16px;
-      color: #ccc;
-      margin: 6px 0;
-      animation: fadeIn 1s ease 0.8s forwards;
-      opacity: 0;
+    input[type="file"] {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 10px;
+      background: #fff;
+      border: none;
+      color: #000;
     }
 
-    .social-links {
-      margin-top: 25px;
-      animation: fadeIn 1s ease 1s forwards;
-      opacity: 0;
-    }
-
-    .social-links a {
-      text-decoration: none;
-      display: inline-block;
-      margin: 0 10px;
-      font-size: 22px;
-      width: 44px;
-      height: 44px;
-      line-height: 44px;
-      text-align: center;
-      border-radius: 50%;
-      color: white;
-      transition: all 0.3s ease;
-    }
-
-    .social-links a:hover {
-      transform: scale(1.2);
-      opacity: 0.9;
-    }
-
-    .wa { background: #25D366; }
-    .ig { background: #C13584; }
-    .mail { background: #007acc; }
-
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-
-    @media (max-width: 500px) {
-      .card {
-        padding: 30px 20px;
-      }
+    #fileName {
+      margin-top: 15px;
+      font-size: 0.9em;
+      color: #f0f0f0;
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <img class="profile-img" src="yudi.jpg" alt="Yudi Ginting" />
-    <h1>M. Arief Wahyudi Ginting</h1>
-    <p><strong>Asal:</strong> Indonesia</p>
-    <p><strong>Hobi:</strong> Desain Logo, Ngoding, Data</p>
-    <p><strong>Email:</strong> gintingyudi7@gmail.com</p>
-
-    <div class="social-links">
-      <a class="wa" href="https://wa.me/6281374375551" target="_blank" title="WhatsApp">📱</a>
-      <a class="ig" href="https://instagram.com/yudiginting" target="_blank" title="Instagram">📸</a>
-      <a class="mail" href="mailto:gintingyudi7@gmail.com" title="Email">✉️</a>
-    </div>
+  <div class="container">
+    <h1>Upload File Data</h1>
+    <input type="file" id="fileUpload" />
+    <p id="fileName">Belum ada file dipilih</p>
   </div>
+
+  <script>
+    const fileUpload = document.getElementById("fileUpload");
+    const fileName = document.getElementById("fileName");
+
+    fileUpload.addEventListener("change", function () {
+      if (this.files.length > 0) {
+        fileName.textContent = `File terpilih: ${this.files[0].name}`;
+      } else {
+        fileName.textContent = "Belum ada file dipilih";
+      }
+    });
+  </script>
 </body>
 </html>
