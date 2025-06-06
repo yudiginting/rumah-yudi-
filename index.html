@@ -3,70 +3,115 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Upload Data - Yudi</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
+  <title>Yudi Ginting | Profil Profesional</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
       font-family: 'Outfit', sans-serif;
       background: linear-gradient(to right, #1e3c72, #2a5298);
       color: #fff;
+      padding: 30px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      margin: 0;
-      padding: 20px;
     }
-
-    .container {
+    .card {
       background: #ffffff20;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
       border-radius: 16px;
       padding: 30px;
-      width: 90%;
-      max-width: 500px;
+      width: 100%;
+      max-width: 600px;
       text-align: center;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      margin-bottom: 30px;
     }
-
-    h1 {
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #00bcd4;
       margin-bottom: 20px;
     }
-
-    input[type="file"] {
-      margin-top: 15px;
-      padding: 10px;
-      border-radius: 10px;
-      background: #fff;
-      border: none;
-      color: #000;
+    h1 { font-size: 26px; margin-bottom: 10px; }
+    p { font-size: 16px; margin-bottom: 5px; }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
     }
-
-    #fileName {
-      margin-top: 15px;
-      font-size: 0.9em;
-      color: #f0f0f0;
+    input[type="text"], input[type="email"], input[type="file"] {
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+    button {
+      background: #00bcd4;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      color: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #00a0b4;
+    }
+    .contacts a {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      border-radius: 20px;
+      background: #00bcd4;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .contacts a:hover {
+      background: #008fa0;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Upload File Data</h1>
-    <input type="file" id="fileUpload" />
-    <p id="fileName">Belum ada file dipilih</p>
+  <div class="card">
+    <img class="profile-img" src="yudi.jpg" alt="Foto Yudi Ginting">
+    <h1>M. Arief Wahyudi Ginting</h1>
+    <p>Desainer Logo | Web Developer | Data Enthusiast</p>
+    <p>Email: <a href="mailto:gintingyudi7@gmail.com" style="color:#fff;">gintingyudi7@gmail.com</a></p>
+  </div>
+
+  <div class="card">
+    <h2>Upload Data</h2>
+    <form id="uploadForm">
+      <input type="text" placeholder="Nama Lengkap" required>
+      <input type="email" placeholder="Email" required>
+      <input type="file" required>
+      <button type="submit">Kirim Data</button>
+    </form>
+    <p id="status" style="margin-top:10px;"></p>
+  </div>
+
+  <div class="card contacts">
+    <h2>Hubungi Saya</h2>
+    <a href="https://wa.me/6281374375551" target="_blank">WhatsApp</a>
+    <a href="https://instagram.com/yudiginting" target="_blank">Instagram</a>
+    <a href="mailto:gintingyudi7@gmail.com">Email</a>
   </div>
 
   <script>
-    const fileUpload = document.getElementById("fileUpload");
-    const fileName = document.getElementById("fileName");
-
-    fileUpload.addEventListener("change", function () {
-      if (this.files.length > 0) {
-        fileName.textContent = `File terpilih: ${this.files[0].name}`;
-      } else {
-        fileName.textContent = "Belum ada file dipilih";
-      }
+    document.getElementById("uploadForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("status").textContent = "✅ Data berhasil dikirim (simulasi)!";
     });
   </script>
 </body>
